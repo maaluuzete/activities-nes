@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo - Loverary & Brew</title>
+</head>
+<style>
+    body{
+        background-color: #ffe2e9; 
+        font-family: Arial, sans-serif;
+        color: #333333;
+        margin: 30px;
+    }
+
+    h1{
+        color: #b33959;
+    }
+
+    a{
+        color: #ec4d65;
+        text-decoration: none;
+    }
+
+    a:hover{
+        text-decoration: underline;
+    }
+
+    ul{
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        list-style-type: none;
+    }
+
+    li{
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+</style>
+<body>
+    <h1>Catálogo de Produtos</h1>
+    <a href="{% url 'inicio' %}">← Voltar para a Página Inicial</a>
+    <hr>
+
+    <ul>
+    {% for produto in produtos %}
+        <li>
+            <strong>{{ produto.nome }}</strong> - R$ {{ produto.preco }} <br>
+            <em>Categoria: {{ produto.categoria.nome }}</em> <br>
+            <p>{{ produto.descricao }}</p>
+        </li>
+    {% empty %}
+        <li>Nenhum produto cadastrado ou disponível no momento.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
